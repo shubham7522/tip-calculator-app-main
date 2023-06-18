@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+  <link rel="stylesheet" href="output.css">
+</head>
+<body class="">
+  <main>
+    <!-- MOBILE VIEW -->
+    <h2 class="  bg-StrongCyanLight font-Spacemono text-xl text-VeryDarkCyan flex justify-center align-middle font-bold pt-20">
+      SPIL<br>
+      TIER
+    </h2>
+    <section class=" lg:bg-StrongCyanLight lg:h-screen lg:flex lg:place-items-center lg:place-content-center">
+        <h2 class="  bg-StrongCyanLight font-Spacemono text-xl text-VeryDarkCyan flex justify-center align-middle pb[-15px] p-6 font-bold lg:hidden">
+          SPIL<br>
+          TIER
+        </h2>
+        <div class="lg:bg-white lg:rounded-xl lg:w-[50%] lg:h-[62%] lg:flex lg:justify-around">
+              <div class="h-full rounded-t-lg bg-white mt-[-20px] flex flex-col px-4 lg:basis-1/2 lg:mr-6 lg:p-0 lg:bg-none lg:h-0">
+                <p class="text-GrayishCyan font-Spacemono pt-8 z-10 my-1 lg:mt-8 lg:ml-8 lg:pt-s">Bill</p>
+                <p class=" hidden invalidMessage font-Spacemono text-right mt-2 text-pink-600 ">Enter a Number</p>
+                <input type="text" name="amount" class="amount  bg-LightGrayishCyan rounded-md w-full text-right text-VeryDarkCyan uppercase font-Spacemono text-2xl font-bold bg-no-repeat bg-left bg-clip-border bg-auto p-3 border-4 border-LightGrayishCyan placeholder-shown:text-GrayishCyan lg:ml-8 my-2 " style="background-image: url(./images/icon-dollar.svg); " placeholder="0" />
+                <div>
+                  <p class="text-GrayishCyan font-Spacemono pt-2 z-10  px- lg:mt-2 lg:ml-8">Select Tip %</p>
+                </div>
+                <div class="grid grid-cols-2 grid-rows-3 px-4 lg:grid-cols-3 lg:grid-rows-2 lg:ml-5 lg:mt-2 lg:gap-x-1.5">
+                  <button class=" but-1 font-Spacemono p-3 rounded-md bg-VeryDarkCyan font-bold text-2xl mt-2 text-white hover:bg-StrongCyan hover:text-VeryDarkCyan cursor-pointer mx-1">5%</button>    
+                  <button class="but-2 font-Spacemono p-3 rounded-md bg-VeryDarkCyan font-bold text-2xl mt-2 text-white hover:bg-StrongCyan hover:text-VeryDarkCyan cursor-pointer mx-1">10%</button>
+                  <button class="but-3 font-Spacemono p-3 rounded-md bg-VeryDarkCyan font-bold text-2xl mt-2 text-white hover:bg-StrongCyan hover:text-VeryDarkCyan cursor-pointer mx-1">15%</button>    
+                  <button class="but-4 font-Spacemono p-3 rounded-md bg-VeryDarkCyan font-bold text-2xl mt-2 text-white hover:bg-StrongCyan hover:text-VeryDarkCyan cursor-pointer mx-1">20%</button>
+                  <button class=" but-5 font-Spacemono p-3 rounded-md bg-VeryDarkCyan font-bold text-2xl mt-2 text-white hover:bg-StrongCyan hover:text-VeryDarkCyan cursor-pointer mx-1">25%</button>
+                  <input type="text" class="customPer font-Spacemono p-3 font-bold text-2xl mt-2 mx-1 bg-LightGrayishCyan text-VeryDarkCyan text-center placeholder-shown:text-GrayishCyan" name="" id="" placeholder="Custom" oninput="totalCustom()">
+                </div>  
+                <p class=" hidden invalidMessage2 font-Spacemono text-center p-3 text-pink-600 ">Enter a Number</p>
+                <div class="h-full rounded-t-lg bg-white mt-[-20px] flex flex-col px-4  ">
+                  <p class="text-GrayishCyan font-Spacemono pt-8 z-10 my-1 lg:mt-8 lg:ml-5 lg:pt-0 ">Number of People</p>
+                  <p class=" hidden invalidMessage3 font-Spacemono text-right mt-2 text-pink-600 ">Enter a Number</p>
+                  <input type="text" name="personNumber" class="personNumber  bg-LightGrayishCyan rounded-md w-full text-right text-VeryDarkCyan uppercase font-Spacemono text-2xl font-bold bg-no-repeat bg-left bg-clip-border bg-auto p-3 border-4 border-LightGrayishCyan placeholder-shown:text-GrayishCyan lg:ml-5 lg:my-2 lg:w-full lg:p-3" style="background-image: url(./images/icon-person.svg); " placeholder="0"; oninput="totalPerson()" >
+                </div>
+              </div>
+              <div class="lg:basis-1/2 ">
+                <div class="mx-4 bg-VeryDarkCyan rounded-lg p-8 my-2 lg:p-10 lg:my-0">
+                  <div class="flex justify-between my-4">
+                    <div>
+                      <h2 class="text-white font-Spacemono text-lg font-bold  ">Tip Amount</h2>
+                      <p class="text-GrayishCyan font-Spacemono font-bold ">/ person</p>
+                    </div>
+                    <h1 class=" tip text-4xl text-StrongCyan font-Spacemono font-bold  lg:text-5xl">$0.00</h1>
+                  </div>
+                  <div class="flex justify-between my-4">
+                      <div>
+                        <h2 class="text-white font-Spacemono text-lg font-bold  ">Total</h2>
+                        <p class="text-GrayishCyan font-Spacemono font-bold ">/ person</p>
+                      </div>
+                      <h1 class=" total text-4xl text-StrongCyan font-Spacemono font-bold lg:text-5xl">$0.00</h1>
+                    </div>
+                    <div class="flex justify-center">
+                      <button class="bg-StrongCyan reset w-[80vw] p-4 mx-auto rounded-lg text-VeryDarkCyan font-Spacemono font-bold hover:bg-StrongCyanLight lg:w-[90%] lg:p-3 lg:mt-36 " value="RESET" onclick="reset()">RESET</button>
+                    </div>
+                  </div>
+              </div>  
+            </div>
+    </section>
+
+   
+  </main>
+
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Shubham Srivastava</a>.
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
